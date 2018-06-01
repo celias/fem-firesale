@@ -1,3 +1,4 @@
+// library that takes markdown and renders it in HTML
 const marked = require('marked');
 
 const markdownView = document.querySelector('#markdown');
