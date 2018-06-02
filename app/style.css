@@ -28,7 +28,7 @@ textarea, input, div, button {
 }
 
 .controls {
-  background-color: rgb(217, 241, 238);
+  background-color: salmon;
   padding: 10px 10px 10px 10px;
 }
 
@@ -40,7 +40,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(156, 198, 192);
+  background-color: salmon;
 }
 
 button:active {
