@@ -1,5 +1,10 @@
+// main.js is the "main process" action is here
+// renderer.js is where I trigger the UI
+
 // Modules from Electron Lib
 const { app, BrowserWindow, dialog } = require('electron');
+// File System library from Node 
+const fs = require('fs');
 
 let mainWindow = null;
 
@@ -15,8 +20,9 @@ const getFileFromUserSelection = () => {
   if (!files) return; // if the user hits cancel then don't blow up
   
   const file = files[0]; // get the first out of the array
+  const content = fs.readFileSync(file).toString();
 
-  console.log(files);
+  console.log(content);
 };
 
 app.on('ready', () => {
