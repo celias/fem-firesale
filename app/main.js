@@ -8,7 +8,8 @@ const fs = require('fs');
 
 let mainWindow = null;
 
-const getFileFromUserSelection = () => {
+// you could also use module.exports = {}
+const getFileFromUserSelection = exports.getFileFromUserSelection = () => {
   const files = dialog.showOpenDialog(mainWindow, {
     properties:['openFile'], 
     filters: [
@@ -22,7 +23,10 @@ const getFileFromUserSelection = () => {
   const file = files[0]; // get the first out of the array
   const content = fs.readFileSync(file).toString();
 
-  console.log(content);
+  // console.log(content);
+  // grab the content and send to the renderer process
+  // sending messages to the renderer process
+  mainWindow.webContents.send('file-opened', file, content);
 };
 
 app.on('ready', () => {
@@ -32,7 +36,7 @@ app.on('ready', () => {
   
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
-    getFileFromUserSelection();
+    // getFileFromUserSelection();
   });
   
 

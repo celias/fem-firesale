@@ -1,5 +1,7 @@
 // library that takes markdown and renders it in HTML
 const marked = require('marked');
+const { remote } = require('electron');
+const mainProcess = remote.require('./main');
 
 const markdownView = document.querySelector('#markdown');
 const htmlView = document.querySelector('#html');
@@ -18,3 +20,10 @@ const renderMarkdownToHtml = (markdown) => {
 markdownView.addEventListener('keyup', (event) => {
     renderMarkdownToHtml(event.target.value);
 });
+
+openFileButton.addEventListener("click", (listener) => {
+    // alert("I will open a file soon, yo.");
+    mainProcess.getFileFromUserSelection();
+});
+
+//listening for messages from the main process to go ahead and DO SOMETHING
